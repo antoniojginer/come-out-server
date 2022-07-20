@@ -1,11 +1,11 @@
-package com.partyapp.query.event.dto;
+package com.partyapp.query.event;
 
 import lombok.Data;
 
 import java.sql.Date;
 
 @Data
-public class EventDTO {
+public class BaseEventDTO {
     private String id;
     private String organizer;
     private String name;
