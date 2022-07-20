@@ -1,0 +1,7 @@
+com/partyapp/query/user/particular/service/ParticularQueryService.class
+com/partyapp/query/user/company/controller/CompanyQueryController.class
+com/partyapp/query/user/assistant/service/AssistantQueryService.class
+com/partyapp/Application.class
+com/partyapp/query/user/company/service/CompanyQueryService.class
+com/partyapp/query/user/assistant/controller/AssistantQueryController.class
+com/partyapp/query/user/particular/controller/ParticularQueryController.class
