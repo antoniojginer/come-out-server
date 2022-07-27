@@ -1,7 +1,6 @@
 package com.partyapp.query.event.extension.convention.controller;
 
 import com.partyapp.entities.event.convention.ConventionModel;
-import com.partyapp.entities.event.party.PartyModel;
 import com.partyapp.query.event.extension.convention.service.IConventionEventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

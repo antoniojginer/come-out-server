@@ -1,7 +1,6 @@
 package com.partyapp.query.event.extension.show.service;
 
 import com.partyapp.entities.event.party.PartyModel;
-import com.partyapp.entities.event.show.ShowModel;
 import com.partyapp.query.event.extension.show.dataAccess.IShowEventDA;
 import com.partyapp.query.event.extension.show.dataAccess.ShowEventDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +13,9 @@ public class ShowEventService implements IShowEventService {
     private IShowEventDA showEventDao;
 
     @Override
-    public ShowModel getEventDetail(String id) {
+    public PartyModel getEventDetail(String id) {
         // TODO
         ShowEventDAO showEventDTO = showEventDao.getEventDetail(id);
-        return new ShowModel();
+        return new PartyModel();
     }
 }
