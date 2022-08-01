@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("event/covention")
+@RequestMapping("event/convention")
 public class ConventionEventController implements IConventionEventController {
 
     @Autowired
@@ -17,7 +19,8 @@ public class ConventionEventController implements IConventionEventController {
 
     @Override
     @GetMapping("/{id}")
-    public ConventionModel getEventDetail(@PathVariable(value = "id") String id) {
+    public ConventionModel getEventDetail(@PathVariable(value = "id") Long id) {
         return conventionEventService.getEventDetail(id);
     }
+
 }

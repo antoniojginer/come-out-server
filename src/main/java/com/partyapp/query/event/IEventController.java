@@ -2,7 +2,9 @@ package com.partyapp.query.event;
 
 import com.partyapp.entities.event.BaseEventModel;
 
-public interface IEventController {
+import java.util.List;
 
-    public BaseEventModel getEventDetail(String id);
+public interface IEventController <T extends BaseEventModel> {
+
+    public BaseEventModel getEventDetail(Long id);
 }

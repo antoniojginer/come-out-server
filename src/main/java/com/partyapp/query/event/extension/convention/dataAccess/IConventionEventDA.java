@@ -1,7 +1,7 @@
 package com.partyapp.query.event.extension.convention.dataAccess;
 
-import com.partyapp.query.event.IEventDAService;
+import java.util.List;
 
-public interface IConventionEventDA extends IEventDAService {
-    @Override ConventionEventDAO getEventDetail(String id);
+public interface IConventionEventDA {
+    public ConventionEventDAO getConventionEventDetail(Long id);
 }

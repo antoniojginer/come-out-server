@@ -2,6 +2,8 @@ package com.partyapp.query.event;
 
 import com.partyapp.entities.event.BaseEventModel;
 
-public interface IEventService {
-    public BaseEventModel getEventDetail(String id);
+import java.util.List;
+
+public interface IEventService <T extends BaseEventModel> {
+    public BaseEventModel getEventDetail(Long id);
 }
