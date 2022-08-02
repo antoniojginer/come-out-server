@@ -14,7 +14,8 @@ public class ConventionEventDA implements IConventionEventDA {
     @Override
     public ConventionEventDAO getConventionEventDetail(Long id) {
         Optional<ConventionEventDAO> conventionEventDAO = conventionEventRepository.findById(id);
-        return new ConventionEventDAO();
+        if (conventionEventDAO.get() == null) throw new RuntimeException();
+        return conventionEventDAO.get();
     }
 
 }
