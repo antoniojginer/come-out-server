@@ -37,6 +37,8 @@ public class BaseEventDAO {
     private Boolean isMooneyPoolShown;
     @Column(name = "event_type")
     private Integer eventType;
+    @Column(name = "organizer_type")
+    private Integer organizerType;
 
     @ManyToOne
     @JoinColumn(name = "organizer")

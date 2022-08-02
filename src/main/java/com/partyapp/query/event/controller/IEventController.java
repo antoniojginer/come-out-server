@@ -1,10 +1,8 @@
 package com.partyapp.query.event.controller;
 
-import com.partyapp.entities.event.BaseEventModel;
+import com.partyapp.query.event.service.BaseEventDTO;
 
-import java.util.List;
+public interface IEventController <T extends BaseEventDTO> {
 
-public interface IEventController <T extends BaseEventModel> {
-
-    public BaseEventModel getEventDetail(Long id);
+    public BaseEventDTO getEventDetail(Long id);
 }
