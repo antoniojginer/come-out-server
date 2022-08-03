@@ -1,16 +1,16 @@
 package com.partyapp.commons.mapper;
 
 import com.partyapp.commons.mapper.helper.DatabaseStringToListHelper;
-import com.partyapp.query.event.base.dataAccess.BaseEventDAO;
-import com.partyapp.query.event.party.dataAccess.PartyEventDAO;
-import com.partyapp.query.event.party.service.PartyEventDTO;
-import com.partyapp.query.event.base.service.BaseEventDTO;
-import com.partyapp.query.event.convention.dataAccess.ConventionEventDAO;
-import com.partyapp.query.event.convention.service.ConventionEventDTO;
-import com.partyapp.query.location.dataAccess.LocationDAO;
-import com.partyapp.query.location.service.LocationDTO;
-import com.partyapp.query.user.dataAccess.BaseUserDAO;
-import com.partyapp.query.user.service.BaseUserDTO;
+import com.partyapp.commons.dataAccess.event.base.BaseEventDAO;
+import com.partyapp.commons.dataAccess.event.party.PartyEventDAO;
+import com.partyapp.commons.entities.event.party.PartyEventDTO;
+import com.partyapp.commons.entities.event.base.BaseEventDTO;
+import com.partyapp.commons.dataAccess.event.convention.ConventionEventDAO;
+import com.partyapp.commons.entities.event.convention.ConventionEventDTO;
+import com.partyapp.commons.dataAccess.location.LocationDAO;
+import com.partyapp.commons.entities.location.LocationDTO;
+import com.partyapp.commons.dataAccess.user.base.BaseUserDAO;
+import com.partyapp.commons.entities.user.base.BaseUserDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.springframework.beans.factory.annotation.Autowired;
