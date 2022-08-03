@@ -2,6 +2,8 @@ package com.partyapp.commons.mapper;
 
 import com.partyapp.commons.mapper.helper.DatabaseStringToListHelper;
 import com.partyapp.query.event.dataAccess.BaseEventDAO;
+import com.partyapp.query.event.extension.party.dataAccess.PartyEventDAO;
+import com.partyapp.query.event.extension.party.service.PartyEventDTO;
 import com.partyapp.query.event.service.BaseEventDTO;
 import com.partyapp.query.event.extension.convention.dataAccess.ConventionEventDAO;
 import com.partyapp.query.event.extension.convention.service.ConventionEventDTO;
@@ -61,14 +63,38 @@ public abstract class DataAccessObjectToDataTransferObjectMapper {
             source = "source.endDate",
             dateFormat = "yyyy-MM-dd"
     )
-    public abstract ConventionEventDTO toConventionEventDto(BaseEventDAO source);
+    public abstract ConventionEventDTO toConventionEventDetailDto(BaseEventDAO source);
 
-    public ConventionEventDTO toConventionEventDto(ConventionEventDAO source) {
-        ConventionEventDTO res = toConventionEventDto(source.getEvent());
+    public ConventionEventDTO toConventionEventDetailDto(ConventionEventDAO source) {
+        ConventionEventDTO res = toConventionEventDetailDto(source.getEvent());
         List<String> assistantNames = listHelper.getListFromString(source.getAssistants());
         res.setAssistants(assistantNames);
         res.setConventionTypeId(source.getConventionType().getId());
         res.setConventionTypeName(source.getConventionType().getName());
+        return res;
+    }
+
+    // Party Event Mappers
+    @Mapping(
+            target="initDate",
+            source = "source.initDate",
+            dateFormat = "yyyy-MM-dd"
+    )
+    @Mapping(
+            target="endDate",
+            source = "source.endDate",
+            dateFormat = "yyyy-MM-dd"
+    )
+    public abstract PartyEventDTO toPartyEventDto(BaseEventDAO source);
+
+    public PartyEventDTO toPartyEventDetailDto(PartyEventDAO source) {
+        PartyEventDTO res = toPartyEventDto(source.getEvent());
+        List<String> diskJockeys = listHelper.getListFromString(source.getDiskJockeys());
+        List<String> assistants = listHelper.getListFromString(source.getAssistants());
+        res.setDiskJockeys(diskJockeys);
+        res.setAssistants(assistants);
+        res.setPartyTypeId(source.getPartyType().getId());
+        res.setPartyTypeName(source.getPartyType().getName());
         return res;
     }
 }

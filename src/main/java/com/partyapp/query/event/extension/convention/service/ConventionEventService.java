@@ -6,7 +6,6 @@ import com.partyapp.query.event.extension.convention.dataAccess.IConventionEvent
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,7 +21,7 @@ public class ConventionEventService implements IConventionEventService {
     @Override
     public ConventionEventDTO getEventDetail(Long id) {
         ConventionEventDAO conventionEventDAO = conventionEventDA.getConventionEventDetail(id);
-        return mapper.toConventionEventDto(conventionEventDAO);
+        return mapper.toConventionEventDetailDto(conventionEventDAO);
     }
 
     @Override
@@ -30,7 +29,7 @@ public class ConventionEventService implements IConventionEventService {
         List <ConventionEventDAO> conventionEventDAOList = conventionEventDA.getAllConventionEvents();
         List<ConventionEventDTO> res = conventionEventDAOList
                 .stream()
-                .map(event -> mapper.toConventionEventDto(event))
+                .map(event -> mapper.toConventionEventDetailDto(event))
                 .collect(Collectors.toList());
         return res;
     }
