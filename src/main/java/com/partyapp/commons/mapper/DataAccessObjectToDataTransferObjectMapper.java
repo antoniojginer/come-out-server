@@ -1,12 +1,12 @@
 package com.partyapp.commons.mapper;
 
 import com.partyapp.commons.mapper.helper.DatabaseStringToListHelper;
-import com.partyapp.query.event.dataAccess.BaseEventDAO;
-import com.partyapp.query.event.extension.party.dataAccess.PartyEventDAO;
-import com.partyapp.query.event.extension.party.service.PartyEventDTO;
-import com.partyapp.query.event.service.BaseEventDTO;
-import com.partyapp.query.event.extension.convention.dataAccess.ConventionEventDAO;
-import com.partyapp.query.event.extension.convention.service.ConventionEventDTO;
+import com.partyapp.query.event.base.dataAccess.BaseEventDAO;
+import com.partyapp.query.event.party.dataAccess.PartyEventDAO;
+import com.partyapp.query.event.party.service.PartyEventDTO;
+import com.partyapp.query.event.base.service.BaseEventDTO;
+import com.partyapp.query.event.convention.dataAccess.ConventionEventDAO;
+import com.partyapp.query.event.convention.service.ConventionEventDTO;
 import com.partyapp.query.location.dataAccess.LocationDAO;
 import com.partyapp.query.location.service.LocationDTO;
 import com.partyapp.query.user.dataAccess.BaseUserDAO;
