@@ -4,4 +4,5 @@ import java.util.List;
 
 public interface IConventionEventDA {
     public ConventionEventDAO getConventionEventDetail(Long id);
+    public List<ConventionEventDAO> getAllConventionEvents();
 }

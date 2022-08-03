@@ -2,6 +2,7 @@
 /Users/aginer/personal/tfg/wparty-server/src/main/java/com/partyapp/commons/mapper/helper/DatabaseStringToListHelper.java
 /Users/aginer/personal/tfg/wparty-server/src/main/java/com/partyapp/query/event/extension/convention/dataAccess/ConventionTypeDAO.java
 /Users/aginer/personal/tfg/wparty-server/src/main/java/com/partyapp/query/user/extension/company/controller/CompanyQueryController.java
+/Users/aginer/personal/tfg/wparty-server/src/main/java/com/partyapp/commons/exceptions/BackendException.java
 /Users/aginer/personal/tfg/wparty-server/src/main/java/com/partyapp/command/user/particular/controller/ParticularCommandController.java
 /Users/aginer/personal/tfg/wparty-server/src/main/java/com/partyapp/query/location/dataAccess/LocalityDAO.java
 /Users/aginer/personal/tfg/wparty-server/src/main/java/com/partyapp/command/user/company/controller/CompanyCommandController.java
@@ -14,7 +15,6 @@
 /Users/aginer/personal/tfg/wparty-server/src/main/java/com/partyapp/query/event/service/BaseEventDTO.java
 /Users/aginer/personal/tfg/wparty-server/src/main/java/com/partyapp/query/event/extension/convention/service/IConventionEventService.java
 /Users/aginer/personal/tfg/wparty-server/src/main/java/com/partyapp/Application.java
-/Users/aginer/personal/tfg/wparty-server/src/main/java/com/partyapp/commons/exceptions/DataAccessException.java
 /Users/aginer/personal/tfg/wparty-server/src/main/java/com/partyapp/command/user/company/service/CompanyCommandService.java
 /Users/aginer/personal/tfg/wparty-server/src/main/java/com/partyapp/query/user/extension/company/service/CompanyService.java
 /Users/aginer/personal/tfg/wparty-server/src/main/java/com/partyapp/commons/mapper/DataAccessObjectToDataTransferObjectMapper.java
@@ -37,3 +37,4 @@
 /Users/aginer/personal/tfg/wparty-server/src/main/java/com/partyapp/query/event/extension/convention/controller/ConventionEventController.java
 /Users/aginer/personal/tfg/wparty-server/src/main/java/com/partyapp/query/event/extension/convention/service/ConventionEventDTO.java
 /Users/aginer/personal/tfg/wparty-server/src/main/java/com/partyapp/query/user/extension/assistant/service/AssistantQueryService.java
+/Users/aginer/personal/tfg/wparty-server/src/main/java/com/partyapp/commons/exceptions/BackendExceptionCode.java

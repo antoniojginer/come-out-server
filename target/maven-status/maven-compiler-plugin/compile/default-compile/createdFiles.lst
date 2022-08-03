@@ -2,10 +2,10 @@ com/partyapp/query/event/service/BaseEventDTO.class
 com/partyapp/commons/mapper/DataAccessObjectToDataTransferObjectMapper.class
 com/partyapp/query/user/service/BaseUserDTO.class
 com/partyapp/query/event/extension/convention/dataAccess/ConventionTypeDAO.class
+com/partyapp/commons/exceptions/BackendExceptionCode.class
 com/partyapp/command/user/assistant/service/AssistantCommandService.class
 com/partyapp/query/user/extension/particular/ParticularUserDAO.class
 com/partyapp/query/user/dataAccess/BaseUserDAO.class
-com/partyapp/commons/exceptions/DataAccessException.class
 com/partyapp/query/user/extension/particular/controller/ParticularQueryController.class
 com/partyapp/query/event/extension/convention/dataAccess/ConventionEventDA.class
 com/partyapp/query/event/extension/convention/dataAccess/ConventionEventDAO.class
@@ -13,6 +13,7 @@ com/partyapp/query/event/extension/convention/controller/ConventionEventControll
 com/partyapp/query/user/extension/assistant/service/AssistantQueryService.class
 com/partyapp/query/user/extension/particular/service/ParticularQueryService.class
 com/partyapp/query/event/extension/convention/service/ConventionEventDTO.class
+com/partyapp/commons/exceptions/BackendException.class
 com/partyapp/query/location/dataAccess/CountryDAO.class
 com/partyapp/query/event/extension/convention/service/IConventionEventService.class
 com/partyapp/command/user/particular/controller/ParticularCommandController.class
