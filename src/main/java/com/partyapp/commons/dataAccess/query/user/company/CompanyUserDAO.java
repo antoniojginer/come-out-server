@@ -8,15 +8,14 @@ import javax.persistence.*;
 @Table(name = "company")
 public class CompanyUserDAO {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", updatable = false, nullable = false)
     private Long id;
 
     @Column(name = "name")
     private String name;
 
-    @Column(name = "surname")
-    private String surname;
+    @Column(name = "cif")
+    private String cif;
 
     @OneToOne
     @MapsId
