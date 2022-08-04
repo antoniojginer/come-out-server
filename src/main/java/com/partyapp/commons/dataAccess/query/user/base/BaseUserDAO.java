@@ -1,6 +1,6 @@
-package com.partyapp.commons.dataAccess.user.base;
+package com.partyapp.commons.dataAccess.query.user.base;
 
-import com.partyapp.commons.dataAccess.location.LocationDAO;
+import com.partyapp.commons.dataAccess.query.location.LocationDAO;
 import lombok.Getter;
 import lombok.Setter;
 

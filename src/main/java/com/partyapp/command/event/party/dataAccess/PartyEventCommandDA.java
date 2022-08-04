@@ -1,9 +1,11 @@
 package com.partyapp.command.event.party.dataAccess;
 
 import com.partyapp.command.event.party.dataAccess.jpaRepository.PartyEventCommandRepository;
-import com.partyapp.commons.dataAccess.event.party.PartyEventDAO;
+import com.partyapp.commons.dataAccess.command.event.party.PartyEventCommandDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
 
 @Service
 public class PartyEventCommandDA implements IPartyEventCommandDA {
@@ -12,13 +14,17 @@ public class PartyEventCommandDA implements IPartyEventCommandDA {
     private PartyEventCommandRepository partyEventRepository;
 
     @Override
-    public PartyEventDAO createPartyEvent(PartyEventDAO event) {
-        // TODO
-        return new PartyEventDAO();
+    @Transactional
+    public void createPartyEvent(PartyEventCommandDAO partyEvent) {
+        try {
+            partyEventRepository.save(partyEvent);
+        } catch (Exception e) {
+            // TODO
+            throw new RuntimeException();
+        }
     }
 
-    public PartyEventDAO modifyPartyEvent(PartyEventDAO event, Long id) {
+    public void modifyPartyEvent(PartyEventCommandDAO event, Long id) {
         // TODO
-        return new PartyEventDAO();
     }
 }

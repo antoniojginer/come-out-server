@@ -1,15 +1,15 @@
 package com.partyapp.commons.mapper;
 
 import com.partyapp.commons.mapper.helper.DatabaseStringToListHelper;
-import com.partyapp.commons.dataAccess.event.base.BaseEventDAO;
-import com.partyapp.commons.dataAccess.event.party.PartyEventDAO;
+import com.partyapp.commons.dataAccess.query.event.base.BaseEventDAO;
+import com.partyapp.commons.dataAccess.query.event.party.PartyEventDAO;
 import com.partyapp.commons.entities.event.party.PartyEventDTO;
 import com.partyapp.commons.entities.event.base.BaseEventDTO;
-import com.partyapp.commons.dataAccess.event.convention.ConventionEventDAO;
+import com.partyapp.commons.dataAccess.query.event.convention.ConventionEventDAO;
 import com.partyapp.commons.entities.event.convention.ConventionEventDTO;
-import com.partyapp.commons.dataAccess.location.LocationDAO;
+import com.partyapp.commons.dataAccess.query.location.LocationDAO;
 import com.partyapp.commons.entities.location.LocationDTO;
-import com.partyapp.commons.dataAccess.user.base.BaseUserDAO;
+import com.partyapp.commons.dataAccess.query.user.base.BaseUserDAO;
 import com.partyapp.commons.entities.user.base.BaseUserDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -18,7 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @Mapper(componentModel = "spring")
-public abstract class DataAccessObjectToDataTransferObjectMapper {
+public abstract class QueryMapper {
 
     @Autowired
     protected DatabaseStringToListHelper listHelper;
@@ -56,12 +56,12 @@ public abstract class DataAccessObjectToDataTransferObjectMapper {
     @Mapping(
             target="initDate",
             source = "source.initDate",
-            dateFormat = "yyyy-MM-dd"
+            dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"
     )
     @Mapping(
             target="endDate",
             source = "source.endDate",
-            dateFormat = "yyyy-MM-dd"
+            dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"
     )
     public abstract ConventionEventDTO toConventionEventDetailDto(BaseEventDAO source);
 
@@ -78,12 +78,12 @@ public abstract class DataAccessObjectToDataTransferObjectMapper {
     @Mapping(
             target="initDate",
             source = "source.initDate",
-            dateFormat = "yyyy-MM-dd"
+            dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"
     )
     @Mapping(
             target="endDate",
             source = "source.endDate",
-            dateFormat = "yyyy-MM-dd"
+            dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"
     )
     public abstract PartyEventDTO toPartyEventDto(BaseEventDAO source);
 
@@ -97,4 +97,6 @@ public abstract class DataAccessObjectToDataTransferObjectMapper {
         res.setPartyTypeName(source.getPartyType().getName());
         return res;
     }
+
+    public abstract BaseEventDAO toBaseEventDAO(PartyEventDTO source);
 }

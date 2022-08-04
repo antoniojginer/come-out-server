@@ -1,6 +1,6 @@
-package com.partyapp.commons.dataAccess.user.particular;
+package com.partyapp.commons.dataAccess.query.user.particular;
 
-import com.partyapp.commons.dataAccess.user.base.BaseUserDAO;
+import com.partyapp.commons.dataAccess.query.user.base.BaseUserDAO;
 
 import javax.persistence.*;
 import java.util.Date;

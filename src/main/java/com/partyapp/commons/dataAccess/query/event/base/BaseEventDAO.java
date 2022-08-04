@@ -1,7 +1,8 @@
-package com.partyapp.commons.dataAccess.event.base;
+package com.partyapp.commons.dataAccess.query.event.base;
 
-import com.partyapp.commons.dataAccess.location.LocationDAO;
-import com.partyapp.commons.dataAccess.user.base.BaseUserDAO;
+import com.partyapp.commons.dataAccess.query.location.LocationDAO;
+import com.partyapp.commons.dataAccess.query.user.base.BaseUserDAO;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,8 +10,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "event")
-@Getter
-@Setter
+@Data
 public class BaseEventDAO {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

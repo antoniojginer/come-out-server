@@ -1,8 +1,8 @@
 package com.partyapp.command.event.party.dataAccess;
 
-import com.partyapp.commons.dataAccess.event.party.PartyEventDAO;
+import com.partyapp.commons.dataAccess.command.event.party.PartyEventCommandDAO;
 
 public interface IPartyEventCommandDA {
-    public PartyEventDAO createPartyEvent(PartyEventDAO event);
-    public PartyEventDAO modifyPartyEvent(PartyEventDAO event, Long id);
+    public void createPartyEvent(PartyEventCommandDAO partyEvent);
+    public void modifyPartyEvent(PartyEventCommandDAO event, Long id);
 }

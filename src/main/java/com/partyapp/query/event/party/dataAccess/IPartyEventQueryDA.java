@@ -1,6 +1,6 @@
 package com.partyapp.query.event.party.dataAccess;
 
-import com.partyapp.commons.dataAccess.event.party.PartyEventDAO;
+import com.partyapp.commons.dataAccess.query.event.party.PartyEventDAO;
 
 import java.util.List;
 

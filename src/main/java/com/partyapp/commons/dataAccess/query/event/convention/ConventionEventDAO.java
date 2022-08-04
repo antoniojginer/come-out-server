@@ -1,6 +1,6 @@
-package com.partyapp.commons.dataAccess.event.convention;
+package com.partyapp.commons.dataAccess.query.event.convention;
 
-import com.partyapp.commons.dataAccess.event.base.BaseEventDAO;
+import com.partyapp.commons.dataAccess.query.event.base.BaseEventDAO;
 import lombok.Data;
 
 import javax.persistence.*;

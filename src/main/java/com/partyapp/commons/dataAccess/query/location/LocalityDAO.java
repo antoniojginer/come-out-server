@@ -1,4 +1,4 @@
-package com.partyapp.commons.dataAccess.location;
+package com.partyapp.commons.dataAccess.query.location;
 
 import lombok.Data;
 

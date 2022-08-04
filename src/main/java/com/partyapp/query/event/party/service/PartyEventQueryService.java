@@ -1,9 +1,9 @@
 package com.partyapp.query.event.party.service;
 
 import com.partyapp.commons.entities.event.party.PartyEventDTO;
-import com.partyapp.commons.mapper.DataAccessObjectToDataTransferObjectMapper;
+import com.partyapp.commons.mapper.QueryMapper;
 import com.partyapp.query.event.party.dataAccess.IPartyEventQueryDA;
-import com.partyapp.commons.dataAccess.event.party.PartyEventDAO;
+import com.partyapp.commons.dataAccess.query.event.party.PartyEventDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,12 +16,13 @@ public class PartyEventQueryService implements IPartyEventQueryService {
     private IPartyEventQueryDA partyEventDA;
 
     @Autowired
-    private DataAccessObjectToDataTransferObjectMapper mapper;
+    private QueryMapper mapper;
 
     @Override
     public PartyEventDTO getEventDetail(Long id) {
         PartyEventDAO partyEventDAO = partyEventDA.getPartyEventDetail(id);
-        return mapper.toPartyEventDetailDto(partyEventDAO);
+        PartyEventDTO res = mapper.toPartyEventDetailDto(partyEventDAO);
+        return res;
     }
 
     @Override

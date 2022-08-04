@@ -1,9 +1,9 @@
 package com.partyapp.query.event.convention.service;
 
-import com.partyapp.commons.mapper.DataAccessObjectToDataTransferObjectMapper;
+import com.partyapp.commons.mapper.QueryMapper;
 import com.partyapp.commons.entities.event.convention.ConventionEventDTO;
 import com.partyapp.query.event.convention.dataAccess.IConventionEventQueryDA;
-import com.partyapp.commons.dataAccess.event.convention.ConventionEventDAO;
+import com.partyapp.commons.dataAccess.query.event.convention.ConventionEventDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +17,7 @@ public class ConventionEventQueryService implements IConventionEventQueryService
     private IConventionEventQueryDA conventionEventDA;
 
     @Autowired
-    private DataAccessObjectToDataTransferObjectMapper mapper;
+    private QueryMapper mapper;
 
     @Override
     public ConventionEventDTO getEventDetail(Long id) {

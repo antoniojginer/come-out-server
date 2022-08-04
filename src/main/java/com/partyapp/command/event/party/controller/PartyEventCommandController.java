@@ -18,13 +18,13 @@ public class PartyEventCommandController implements IPartyEventCommandController
 
     @Override
     @PutMapping("")
-    public PartyEventDTO createEvent(@RequestBody PartyEventDTO request) {
-        return partyEventService.createEvent(request);
+    public void createEvent(@RequestBody PartyEventDTO request) {
+        partyEventService.createEvent(request);
     }
 
     @Override
     @PostMapping("/{id}")
-    public PartyEventDTO modifyEvent(@RequestBody PartyEventDTO request, Long id) {
-        return partyEventService.createEvent(request);
+    public void modifyEvent(@RequestBody PartyEventDTO request, Long id) {
+        partyEventService.modifyEvent(request, id);
     }
 }

@@ -1,6 +1,6 @@
 package com.partyapp.query.event.convention.dataAccess;
 
-import com.partyapp.commons.dataAccess.event.convention.ConventionEventDAO;
+import com.partyapp.commons.dataAccess.query.event.convention.ConventionEventDAO;
 import com.partyapp.query.event.convention.dataAccess.jpaRepository.ConventionEventQueryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
