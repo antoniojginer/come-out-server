@@ -27,7 +27,6 @@ public class BaseUserQueryController implements IBaseUserQueryController {
     @Override
     @GetMapping("")
     public List<BaseUserDTO> getAllUsers() {
-        // TODO
-        return null;
+        return baseUserQueryService.getAllUsers();
     }
 }

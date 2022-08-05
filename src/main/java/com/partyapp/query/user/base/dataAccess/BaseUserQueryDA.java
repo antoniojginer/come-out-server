@@ -37,7 +37,20 @@ public class BaseUserQueryDA implements IBaseUserQueryDA {
 
     @Override
     public List<BaseUserDAO> getAllUsers() {
-        // TODO
-        return null;
+        try {
+            List<BaseUserDAO> users = baseUserQueryRepository.findAll();
+            if (!users.isEmpty()) {
+                return users;
+            }
+        } catch (Exception e) {
+            throw new ResponseStatusException(
+                    HttpStatus.INTERNAL_SERVER_ERROR,
+                    "Error getting all users"
+            );
+        }
+        throw new ResponseStatusException(
+                HttpStatus.NOT_FOUND,
+                "Users not found"
+        );
     }
 }

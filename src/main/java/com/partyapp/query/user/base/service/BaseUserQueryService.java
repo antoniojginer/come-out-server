@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class BaseUserQueryService implements IBaseUserQueryService {
@@ -27,7 +28,9 @@ public class BaseUserQueryService implements IBaseUserQueryService {
 
     @Override
     public List getAllUsers() {
-        // TODO
-        return null;
+        List<BaseUserDAO> baseUsers = baseUserQueryDA.getAllUsers();
+        return baseUsers.stream()
+                .map(user -> queryMapper.toBaseUserDto(user))
+                .collect(Collectors.toList());
     }
 }
