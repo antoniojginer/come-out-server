@@ -1,7 +1,9 @@
 package com.partyapp.commons.mapper;
 
+import com.partyapp.commons.dataAccess.query.location.LocalityDAO;
 import com.partyapp.commons.dataAccess.query.user.company.CompanyUserDAO;
 import com.partyapp.commons.dataAccess.query.user.particular.ParticularUserDAO;
+import com.partyapp.commons.entities.location.LocalityDTO;
 import com.partyapp.commons.entities.user.company.CompanyUserDTO;
 import com.partyapp.commons.entities.user.particular.ParticularUserDTO;
 import com.partyapp.commons.mapper.helper.DatabaseStringToListHelper;
@@ -48,6 +50,19 @@ public abstract class QueryMapper {
     )
     public abstract LocationDTO toLocationDto(LocationDAO source);
 
+    @Mapping(
+            target = "id",
+            source = "source.localityId"
+    )
+    @Mapping(
+            target = "countryId",
+            source = "source.country.id"
+    )
+    @Mapping(
+            target = "countryName",
+            source = "source.country.name"
+    )
+    public abstract LocalityDTO toLocalityDto(LocalityDAO source);
 
     // User Mappers
     public abstract BaseUserDTO toBaseUserDto(BaseUserDAO source);

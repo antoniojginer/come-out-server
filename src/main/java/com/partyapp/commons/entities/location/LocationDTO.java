@@ -15,6 +15,6 @@ public class LocationDTO {
     private String postalCode;
     private Long localityId;
     private String localityName;
-    private Long countryId;
+    private Integer countryId;
     private String countryName;
 }
