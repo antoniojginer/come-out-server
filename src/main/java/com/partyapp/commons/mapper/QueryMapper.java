@@ -1,7 +1,9 @@
 package com.partyapp.commons.mapper;
 
 import com.partyapp.commons.dataAccess.query.user.company.CompanyUserDAO;
+import com.partyapp.commons.dataAccess.query.user.particular.ParticularUserDAO;
 import com.partyapp.commons.entities.user.company.CompanyUserDTO;
+import com.partyapp.commons.entities.user.particular.ParticularUserDTO;
 import com.partyapp.commons.mapper.helper.DatabaseStringToListHelper;
 import com.partyapp.commons.dataAccess.query.event.base.BaseEventDAO;
 import com.partyapp.commons.dataAccess.query.event.party.PartyEventDAO;
@@ -59,6 +61,18 @@ public abstract class QueryMapper {
         res.setLocation(baseUserDTO.getLocation());
         res.setCif(source.getCif());
         res.setName(source.getName());
+        return res;
+    }
+
+    public ParticularUserDTO toParticularUserDetailDto(ParticularUserDAO source) {
+        BaseUserDTO baseUserDTO = toBaseUserDto(source.getUserInfo());
+        ParticularUserDTO res = new ParticularUserDTO();
+        res.setId(baseUserDTO.getId());
+        res.setEmail(baseUserDTO.getEmail());
+        res.setLocation(baseUserDTO.getLocation());
+        res.setName(source.getName());
+        res.setSurname(source.getSurname());
+        res.setBirthdate(source.getBirthdate());
         return res;
     }
 

@@ -1,12 +1,14 @@
 package com.partyapp.commons.dataAccess.query.user.particular;
 
 import com.partyapp.commons.dataAccess.query.user.base.BaseUserDAO;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "particular")
+@Data
 public class ParticularUserDAO {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
