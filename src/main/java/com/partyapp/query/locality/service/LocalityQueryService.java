@@ -5,10 +5,12 @@ import com.partyapp.commons.entities.location.LocalityDTO;
 import com.partyapp.commons.mapper.QueryMapper;
 import com.partyapp.query.locality.dataAccess.ILocalityQueryDA;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class LocalityQueryService implements ILocalityQueryService {
 
     @Autowired
@@ -18,8 +20,8 @@ public class LocalityQueryService implements ILocalityQueryService {
     private QueryMapper queryMapper;
 
     @Override
-    public LocalityDTO getLocalityById(Long id) {
-        LocalityDAO localityDAO = localityQueryDA.getLocalityById(id);
+    public LocalityDTO getLocalityById(Long id, Integer countryId) {
+        LocalityDAO localityDAO = localityQueryDA.getLocalityById(id, countryId);
         return queryMapper.toLocalityDto(localityDAO);
     }
 

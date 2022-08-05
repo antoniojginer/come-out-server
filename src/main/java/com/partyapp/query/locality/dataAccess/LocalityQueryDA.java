@@ -1,25 +1,29 @@
 package com.partyapp.query.locality.dataAccess;
 
+import com.partyapp.commons.dataAccess.query.location.LocalityCompositeKey;
 import com.partyapp.commons.dataAccess.query.location.LocalityDAO;
 import com.partyapp.commons.entities.location.LocalityDTO;
 import com.partyapp.query.locality.dataAccess.jpaRepository.LocalityQueryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.security.spec.ECField;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class LocalityQueryDA implements ILocalityQueryDA {
 
     @Autowired
     private LocalityQueryRepository localityQueryRepository;
 
     @Override
-    public LocalityDAO getLocalityById(Long id) {
+    public LocalityDAO getLocalityById(Long id, Integer countryId) {
         try {
-            Optional<LocalityDAO> localityDaoById = localityQueryRepository.findById(id);
+            LocalityCompositeKey localityPk = new LocalityCompositeKey(id, countryId);
+            Optional<LocalityDAO> localityDaoById = localityQueryRepository.findById(localityPk);
             if (!localityDaoById.isEmpty()) {
                 return localityDaoById.get();
             }
