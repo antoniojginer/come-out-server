@@ -1,5 +1,7 @@
 package com.partyapp.commons.mapper;
 
+import com.partyapp.commons.dataAccess.query.user.company.CompanyUserDAO;
+import com.partyapp.commons.entities.user.company.CompanyUserDTO;
 import com.partyapp.commons.mapper.helper.DatabaseStringToListHelper;
 import com.partyapp.commons.dataAccess.query.event.base.BaseEventDAO;
 import com.partyapp.commons.dataAccess.query.event.party.PartyEventDAO;
@@ -11,6 +13,7 @@ import com.partyapp.commons.dataAccess.query.location.LocationDAO;
 import com.partyapp.commons.entities.location.LocationDTO;
 import com.partyapp.commons.dataAccess.query.user.base.BaseUserDAO;
 import com.partyapp.commons.entities.user.base.BaseUserDTO;
+import com.partyapp.query.user.company.dataAccess.CompanyUserQueryDA;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +50,17 @@ public abstract class QueryMapper {
     // User Mappers
     public abstract BaseUserDTO toBaseUserDto(BaseUserDAO source);
 
+
+    public CompanyUserDTO toCompanyUserDetailDto(CompanyUserDAO source) {
+        BaseUserDTO baseUserDTO = toBaseUserDto(source.getUserInfo());
+        CompanyUserDTO res = new CompanyUserDTO();
+        res.setId(baseUserDTO.getId());
+        res.setEmail(baseUserDTO.getEmail());
+        res.setLocation(baseUserDTO.getLocation());
+        res.setCif(source.getCif());
+        res.setName(source.getName());
+        return res;
+    }
 
     // Base Event Mappers
     public abstract BaseEventDTO toBaseEventDto(BaseEventDAO source);
