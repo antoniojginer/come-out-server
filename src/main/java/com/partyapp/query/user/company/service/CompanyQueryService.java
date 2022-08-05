@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CompanyQueryService implements ICompanyUserQueryService {
@@ -22,13 +23,14 @@ public class CompanyQueryService implements ICompanyUserQueryService {
     @Override
     public CompanyUserDTO getUser(Long id) {
         CompanyUserDAO companyUserDAO = companyUserQueryDA.getCompanyUser(id);
-        CompanyUserDTO companyUser = queryMapper.toCompanyUserDetailDto(companyUserDAO);
-        return companyUser;
+        return queryMapper.toCompanyUserDetailDto(companyUserDAO);
     }
 
     @Override
     public List<CompanyUserDTO> getAllUsers() {
-        // TODO
-        return null;
+        List<CompanyUserDAO> companyUsers = companyUserQueryDA.getAllCompanyUsers();
+        return companyUsers.stream()
+                .map(user -> queryMapper.toCompanyUserDetailDto(user))
+                .collect(Collectors.toList());
     }
 }
