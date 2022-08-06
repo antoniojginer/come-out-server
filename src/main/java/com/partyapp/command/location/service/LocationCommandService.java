@@ -1,5 +1,6 @@
 package com.partyapp.command.location.service;
 
+import com.partyapp.command.country.service.ICountryCommandService;
 import com.partyapp.command.locality.service.ILocalityCommandService;
 import com.partyapp.command.location.dataAccess.ILocationCommandDA;
 import com.partyapp.commons.entities.location.CountryDTO;
@@ -32,26 +33,16 @@ public class LocationCommandService implements ILocationCommandService {
     @Autowired
     private ICountryQueryService countryQueryService;
 
+    @Autowired
+    private ICountryCommandService countryCommandService;
+
     @Override
     @Transactional
     public void saveLocation(LocationDTO request) {
         if (request == null) {
             return;
         }
-        // CHECK IF COUNTRY EXIST
-        this.checkCountryInfo(request);
-        if (request.getCountryId() == null || request.getCountryId() < 1) {
-            // SAVE COUNTRY IF NOT EXIST
-
-        }
-        this.checkLocalityInfo(request);
-        if (!this.checkValidLocalityIds(request)) {
-            LocalityDTO localityDTO = commandMapper.toLocalityDTO(request);
-            localityCommandService.saveLocality(localityDTO);
-            request.setLocalityId(localityDTO.getId());
-            request.setLocalityName(localityDTO.getName());
-        }
-
+        this.checkSaveLocationRequest(request);
         locationCommandDA.saveLocation(null);
     }
 
@@ -66,6 +57,22 @@ public class LocationCommandService implements ILocationCommandService {
         return null;
     }
 
+    private void checkSaveLocationRequest(LocationDTO request) {
+        this.checkCountryInfo(request);
+        if (request.getCountryId() == null || request.getCountryId() < 1) {
+            CountryDTO countrySaved = this.saveCountry(request);
+            request.setCountryId(countrySaved.getId());
+            request.setCountryName(countrySaved.getName());
+        }
+
+        this.checkLocalityInfo(request);
+        if (!this.checkValidLocalityIds(request)) {
+            LocalityDTO localitySaved = this.saveLocality(request);
+            request.setLocalityId(localitySaved.getId());
+            request.setLocalityName(localitySaved.getName());
+        }
+    }
+
     private void checkCountryInfo(LocationDTO request) {
         if (!this.existCountryById(request)) {
             CountryDTO country = this.getCountryByName(request);
@@ -76,17 +83,18 @@ public class LocationCommandService implements ILocationCommandService {
     }
 
     private boolean existCountryById(LocationDTO location) {
+        if (location.getCountryId() == null) {
+            return false;
+        }
         boolean existCountry = false;
-        if (location.getCountryId() != null) {
-            try {
-                CountryDTO country = countryQueryService.getCountryById(location.getCountryId());
-                if (country != null) {
-                    existCountry = true;
-                }
-            } catch (ResponseStatusException e) {
-                if (!HttpStatus.NOT_FOUND.equals(e.getStatus())) {
-                    throw e;
-                }
+        try {
+            CountryDTO country = countryQueryService.getCountryById(location.getCountryId());
+            if (country != null) {
+                existCountry = true;
+            }
+        } catch (ResponseStatusException e) {
+            if (!HttpStatus.NOT_FOUND.equals(e.getStatus())) {
+                throw e;
             }
         }
         return existCountry;
@@ -109,6 +117,9 @@ public class LocationCommandService implements ILocationCommandService {
         return res;
     }
 
+    private CountryDTO saveCountry(LocationDTO request) {
+        return countryCommandService.saveCountry(commandMapper.toCountryDTO(request));
+    }
 
     private void checkLocalityInfo(LocationDTO request) {
         if (!this.existLocalityById(request)
@@ -123,18 +134,22 @@ public class LocationCommandService implements ILocationCommandService {
     }
 
     private boolean existLocalityById(LocationDTO request) {
+        if (!this.checkValidLocalityIds(request)) {
+            return false;
+        }
         boolean existLocality = false;
-        if (this.checkValidLocalityIds(request)) {
-            try {
-                LocalityDTO localityDTO = localityQueryService
-                                .getLocalityById(request.getLocalityId(), request.getCountryId());
-                if (localityDTO != null) {
-                    existLocality = true;
+        try {
+            LocalityDTO localityDTO = localityQueryService
+                            .getLocalityById(request.getLocalityId(), request.getCountryId());
+            if (localityDTO != null) {
+                if (!localityDTO.getName().equals(request.getLocalityName())) {
+                    request.setLocalityName(localityDTO.getName());
                 }
-            } catch (ResponseStatusException e) {
-                if (!HttpStatus.NOT_FOUND.equals(e.getStatus())) {
-                    throw e;
-                }
+                existLocality = true;
+            }
+        } catch (ResponseStatusException e) {
+            if (!HttpStatus.NOT_FOUND.equals(e.getStatus())) {
+                throw e;
             }
         }
         return existLocality;
@@ -153,6 +168,10 @@ public class LocationCommandService implements ILocationCommandService {
             }
         }
         return localityDTO;
+    }
+
+    private LocalityDTO saveLocality(LocationDTO request) {
+        return localityCommandService.saveLocality(commandMapper.toLocalityDTO(request));
     }
 
     private boolean checkValidLocalityIds(LocationDTO location) {
