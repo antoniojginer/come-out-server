@@ -3,6 +3,7 @@ package com.partyapp.command.location.service;
 import com.partyapp.command.country.service.ICountryCommandService;
 import com.partyapp.command.locality.service.ILocalityCommandService;
 import com.partyapp.command.location.dataAccess.ILocationCommandDA;
+import com.partyapp.commons.dataAccess.command.location.LocationCommandDAO;
 import com.partyapp.commons.entities.location.CountryDTO;
 import com.partyapp.commons.entities.location.LocalityDTO;
 import com.partyapp.commons.entities.location.LocationDTO;
@@ -43,7 +44,8 @@ public class LocationCommandService implements ILocationCommandService {
             return;
         }
         this.checkSaveLocationRequest(request);
-        locationCommandDA.saveLocation(null);
+        LocationCommandDAO locationCommandDAO = commandMapper.toLocationDAO(request);
+        locationCommandDA.saveLocation(locationCommandDAO);
     }
 
     @Override
