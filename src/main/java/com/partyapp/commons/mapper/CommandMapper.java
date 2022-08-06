@@ -2,8 +2,10 @@ package com.partyapp.commons.mapper;
 
 import com.partyapp.commons.dataAccess.command.event.base.BaseEventCommandDAO;
 import com.partyapp.commons.dataAccess.command.event.party.PartyEventCommandDAO;
+import com.partyapp.commons.dataAccess.command.locality.LocalityCommandDAO;
 import com.partyapp.commons.dataAccess.command.location.LocationCommandDAO;
 import com.partyapp.commons.entities.event.party.PartyEventDTO;
+import com.partyapp.commons.entities.location.LocalityDTO;
 import com.partyapp.commons.entities.location.LocationDTO;
 import com.partyapp.commons.mapper.helper.ListToDatabaseStringHelper;
 import org.mapstruct.Mapper;
@@ -45,9 +47,21 @@ public abstract class CommandMapper {
     )
     public abstract PartyEventCommandDAO toPartyEventCommandDAO(PartyEventDTO source);
 
+
+    // Location mapper
     @Mapping(target = "localityId", source = "source.localityId")
     @Mapping(target = "countryId", source = "source.countryId")
     public abstract LocationCommandDAO toLocationDAO(LocationDTO source);
 
+    @Mapping(
+            target = "name",
+            source = "source.localityName"
+    )
+    @Mapping(
+            target = "id",
+            source = "source.localityId"
+    )
+    public abstract LocalityDTO toLocalityDTO(LocationDTO source);
 
+    public abstract LocalityCommandDAO toLocalityDTO(LocalityDTO source);
 }

@@ -1,5 +1,6 @@
 package com.partyapp.command.location.service;
 
+import com.partyapp.command.locality.service.ILocalityCommandService;
 import com.partyapp.command.location.dataAccess.ILocationCommandDA;
 import com.partyapp.commons.entities.location.CountryDTO;
 import com.partyapp.commons.entities.location.LocalityDTO;
@@ -10,6 +11,7 @@ import com.partyapp.query.locality.service.ILocalityQueryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 @Service
@@ -25,9 +27,13 @@ public class LocationCommandService implements ILocationCommandService {
     private ILocalityQueryService localityQueryService;
 
     @Autowired
+    private ILocalityCommandService localityCommandService;
+
+    @Autowired
     private ICountryQueryService countryQueryService;
 
     @Override
+    @Transactional
     public void saveLocation(LocationDTO request) {
         if (request == null) {
             return;
@@ -40,7 +46,10 @@ public class LocationCommandService implements ILocationCommandService {
         }
         this.checkLocalityInfo(request);
         if (!this.checkValidLocalityIds(request)) {
-            // SAVE LOCALITY IF NOT EXIST
+            LocalityDTO localityDTO = commandMapper.toLocalityDTO(request);
+            localityCommandService.saveLocality(localityDTO);
+            request.setLocalityId(localityDTO.getId());
+            request.setLocalityName(localityDTO.getName());
         }
 
         locationCommandDA.saveLocation(null);
