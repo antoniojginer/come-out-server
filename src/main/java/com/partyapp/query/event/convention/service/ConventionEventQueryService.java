@@ -34,4 +34,9 @@ public class ConventionEventQueryService implements IConventionEventQueryService
                 .collect(Collectors.toList());
         return res;
     }
+
+    @Override
+    public Integer getEventAssistance(Long id) {
+        return null;
+    }
 }

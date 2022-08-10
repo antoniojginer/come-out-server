@@ -30,4 +30,11 @@ public class PartyEventQueryController implements IPartyEventQueryController {
     public List<PartyEventDTO> getAllEvents() {
         return partyEventService.getAllEvents();
     }
+
+    @Override
+    @GetMapping("/assistance/{id}")
+    public Integer getEventAssistance(@PathVariable(value = "id") Long id) {
+        return partyEventService.getEventAssistance(id);
+    }
+
 }

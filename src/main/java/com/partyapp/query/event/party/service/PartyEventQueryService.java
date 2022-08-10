@@ -33,4 +33,9 @@ public class PartyEventQueryService implements IPartyEventQueryService {
                 .map(event -> mapper.toPartyEventDetailDto(event))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public Integer getEventAssistance(Long id) {
+        return partyEventDA.getPartyEventAssistance(id);
+    }
 }

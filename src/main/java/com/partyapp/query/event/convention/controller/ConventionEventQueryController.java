@@ -29,4 +29,10 @@ public class ConventionEventQueryController implements IConventionEventQueryCont
         return conventionEventService.getAllEvents();
     }
 
+    @Override
+    @GetMapping("/assistance/{id}")
+    public Integer getEventAssistance(@PathVariable(value = "id") Long id) {
+        return null;
+    }
+
 }

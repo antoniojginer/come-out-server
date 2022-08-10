@@ -7,4 +7,5 @@ import java.util.List;
 public interface IPartyEventQueryDA {
     public PartyEventDAO getPartyEventDetail(Long id);
     public List<PartyEventDAO> getAllPartyEvents();
+    public Integer getPartyEventAssistance(Long id);
 }

@@ -7,4 +7,5 @@ import java.util.List;
 public interface IEventQueryService<T extends BaseEventDTO> {
     public BaseEventDTO getEventDetail(Long id);
     public List<T> getAllEvents();
+    public Integer getEventAssistance(Long id);
 }
