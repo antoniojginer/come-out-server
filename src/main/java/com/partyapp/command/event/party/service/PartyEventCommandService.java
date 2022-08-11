@@ -3,8 +3,9 @@ package com.partyapp.command.event.party.service;
 import com.partyapp.command.event.base.dataAccess.IBaseEventCommandDA;
 import com.partyapp.command.event.party.dataAccess.IPartyEventCommandDA;
 import com.partyapp.command.location.service.ILocationCommandService;
+import com.partyapp.commons.dataAccess.command.event.base.AssistantEventCommandDAO;
 import com.partyapp.commons.dataAccess.command.event.base.BaseEventCommandDAO;
-import com.partyapp.commons.dataAccess.command.event.party.PartyEventCommandDAO;
+import com.partyapp.commons.entities.event.AssistantEventDTO;
 import com.partyapp.commons.entities.event.party.PartyEventDTO;
 import com.partyapp.commons.entities.location.LocationDTO;
 import com.partyapp.commons.mapper.CommandMapper;
@@ -44,5 +45,13 @@ public class PartyEventCommandService implements IPartyEventCommandService {
 
     public void modifyEvent(PartyEventDTO event, Long id) {
         // TODO
+    }
+
+    @Override
+    public AssistantEventDTO addAssistantToEvent(AssistantEventDTO request) {
+        AssistantEventCommandDAO assistanceEventCommandDAO = partyEventDA.addAssistantToEvent(
+                mapper.toAssistantEventCommandDAO(request)
+        );
+        return mapper.toAssistantEventDTO(assistanceEventCommandDAO);
     }
 }

@@ -1,6 +1,7 @@
 package com.partyapp.command.event.party.controller;
 
 import com.partyapp.command.event.party.service.IPartyEventCommandService;
+import com.partyapp.commons.entities.event.AssistantEventDTO;
 import com.partyapp.commons.entities.event.party.PartyEventDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,4 +26,11 @@ public class PartyEventCommandController implements IPartyEventCommandController
     public void modifyEvent(@RequestBody PartyEventDTO request, Long id) {
         partyEventService.modifyEvent(request, id);
     }
+
+    @Override
+    @PutMapping("/assistant")
+    public AssistantEventDTO addAssistantsToEvent(@RequestBody AssistantEventDTO request) {
+        return partyEventService.addAssistantToEvent(request);
+    }
+
 }
