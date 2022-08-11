@@ -15,13 +15,17 @@ public class PartyEventCommandDA implements IPartyEventCommandDA {
 
     @Override
     @Transactional
-    public void createPartyEvent(PartyEventCommandDAO partyEvent) {
+    public PartyEventCommandDAO createPartyEvent(PartyEventCommandDAO partyEvent) {
         try {
-            partyEventRepository.save(partyEvent);
+            PartyEventCommandDAO res = partyEventRepository.save(partyEvent);
+            if (res != null) {
+                return res;
+            }
         } catch (Exception e) {
             // TODO
             throw new RuntimeException();
         }
+        throw new RuntimeException();
     }
 
     public void modifyPartyEvent(PartyEventCommandDAO event, Long id) {

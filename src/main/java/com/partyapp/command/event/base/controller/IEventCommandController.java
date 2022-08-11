@@ -1,8 +1,9 @@
 package com.partyapp.command.event.base.controller;
 
 import com.partyapp.commons.entities.event.base.BaseEventDTO;
+import com.partyapp.commons.entities.event.party.PartyEventDTO;
 
 public interface IEventCommandController<T extends BaseEventDTO> {
-    public void createEvent(T request);
+    public PartyEventDTO createEvent(T request);
     public void modifyEvent(T request, Long id);
 }

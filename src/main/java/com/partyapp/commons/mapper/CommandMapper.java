@@ -5,6 +5,9 @@ import com.partyapp.commons.dataAccess.command.event.base.BaseEventCommandDAO;
 import com.partyapp.commons.dataAccess.command.event.party.PartyEventCommandDAO;
 import com.partyapp.commons.dataAccess.command.locality.LocalityCommandDAO;
 import com.partyapp.commons.dataAccess.command.location.LocationCommandDAO;
+import com.partyapp.commons.dataAccess.query.event.base.BaseEventDAO;
+import com.partyapp.commons.dataAccess.query.event.party.PartyEventDAO;
+import com.partyapp.commons.dataAccess.query.user.base.BaseUserDAO;
 import com.partyapp.commons.entities.event.party.PartyEventDTO;
 import com.partyapp.commons.entities.location.CountryDTO;
 import com.partyapp.commons.entities.location.LocalityDTO;
@@ -16,6 +19,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @Mapper(componentModel = "spring")
 public abstract class CommandMapper {
+
+    @Autowired
+    private QueryMapper queryMapper;
+
     @Autowired
     protected ListToDatabaseStringHelper helper;
 
@@ -49,11 +56,24 @@ public abstract class CommandMapper {
     )
     public abstract PartyEventCommandDAO toPartyEventCommandDAO(PartyEventDTO source);
 
+    public PartyEventDTO toPartyEventDTO(
+            BaseEventCommandDAO baseEventDAO,
+            PartyEventCommandDAO partyEventDAO,
+            LocationCommandDAO locationCommandDAO,
+            LocalityCommandDAO localityCommandDAO,
+            BaseUserDAO baseUserDAO
+    ) {
+        LocalityDTO localityDTO = toLocalityDTO(localityCommandDAO);
+        //LocationDTO locationDTO
+        return null;
+    }
 
     // Location mapper
     @Mapping(target = "localityId", source = "source.localityId")
     @Mapping(target = "countryId", source = "source.countryId")
     public abstract LocationCommandDAO toLocationDAO(LocationDTO source);
+
+    public abstract LocationDTO toLocationDTO(LocationCommandDAO source);
 
     @Mapping(
             target = "name",

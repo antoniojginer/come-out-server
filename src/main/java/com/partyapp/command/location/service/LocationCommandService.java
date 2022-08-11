@@ -39,13 +39,16 @@ public class LocationCommandService implements ILocationCommandService {
 
     @Override
     @Transactional
-    public void saveLocation(LocationDTO request) {
+    public LocationDTO saveLocation(LocationDTO request) {
         if (request == null) {
-            return;
+            throw new RuntimeException();
         }
         this.checkSaveLocationRequest(request);
-        LocationCommandDAO locationCommandDAO = commandMapper.toLocationDAO(request);
-        locationCommandDA.saveLocation(locationCommandDAO);
+        LocationCommandDAO locationCommandDAO = locationCommandDA.saveLocation(
+                commandMapper.toLocationDAO(request)
+        );
+        request.setId(locationCommandDAO.getId());
+        return request;
     }
 
     @Override

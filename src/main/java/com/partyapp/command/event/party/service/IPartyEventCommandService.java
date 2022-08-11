@@ -5,7 +5,7 @@ import com.partyapp.commons.entities.event.party.PartyEventDTO;
 
 public interface IPartyEventCommandService extends IEventCommandService<PartyEventDTO> {
     @Override
-    public void createEvent(PartyEventDTO event);
+    public PartyEventDTO createEvent(PartyEventDTO event);
 
     @Override
     public void modifyEvent(PartyEventDTO event, Long id);

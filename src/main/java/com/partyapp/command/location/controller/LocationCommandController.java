@@ -17,7 +17,7 @@ public class LocationCommandController implements ILocationCommandController {
 
     @PutMapping("")
     @Override
-    public void saveLocality(@RequestBody LocationDTO request) {
-        locationCommandService.saveLocation(request);
+    public LocationDTO saveLocality(@RequestBody LocationDTO request) {
+        return locationCommandService.saveLocation(request);
     }
 }
