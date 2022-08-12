@@ -7,4 +7,5 @@ public interface IPartyEventCommandDA {
     public PartyEventCommandDAO createPartyEvent(PartyEventCommandDAO partyEvent);
     public void modifyPartyEvent(PartyEventCommandDAO event, Long id);
     public AssistantEventCommandDAO addAssistantToEvent(AssistantEventCommandDAO assistantEventCommandDAO);
+    public void deleteAssistantToEvent(AssistantEventCommandDAO request);
 }

@@ -54,4 +54,9 @@ public class PartyEventCommandService implements IPartyEventCommandService {
         );
         return mapper.toAssistantEventDTO(assistanceEventCommandDAO);
     }
+
+    @Override
+    public void deleteAssistantsToEvent(AssistantEventDTO request) {
+        partyEventDA.deleteAssistantToEvent(mapper.toAssistantEventCommandDAO(request));
+    }
 }

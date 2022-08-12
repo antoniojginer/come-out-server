@@ -33,4 +33,9 @@ public class PartyEventCommandController implements IPartyEventCommandController
         return partyEventService.addAssistantToEvent(request);
     }
 
+    @Override
+    @DeleteMapping("/assistant")
+    public void deleteAssistantsToEvent(@RequestBody AssistantEventDTO request) {
+        partyEventService.deleteAssistantsToEvent(request);
+    }
 }

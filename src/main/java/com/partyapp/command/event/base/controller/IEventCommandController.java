@@ -8,4 +8,5 @@ public interface IEventCommandController<T extends BaseEventDTO> {
     public PartyEventDTO createEvent(T request);
     public void modifyEvent(T request, Long id);
     public AssistantEventDTO addAssistantsToEvent(AssistantEventDTO request);
+    public void deleteAssistantsToEvent(AssistantEventDTO request);
 }

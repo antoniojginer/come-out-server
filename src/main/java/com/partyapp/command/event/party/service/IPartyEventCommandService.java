@@ -11,4 +11,6 @@ public interface IPartyEventCommandService extends IEventCommandService<PartyEve
     public void modifyEvent(PartyEventDTO event, Long id);
     @Override
     public AssistantEventDTO addAssistantToEvent(AssistantEventDTO request);
+    @Override
+    public void deleteAssistantsToEvent(AssistantEventDTO request);
 }

@@ -4,6 +4,7 @@ import com.partyapp.command.event.party.dataAccess.jpaRepository.AssistanceEvent
 import com.partyapp.command.event.party.dataAccess.jpaRepository.PartyEventCommandRepository;
 import com.partyapp.commons.dataAccess.command.event.base.AssistantEventCommandDAO;
 import com.partyapp.commons.dataAccess.command.event.party.PartyEventCommandDAO;
+import com.partyapp.commons.dataAccess.query.event.base.AssistanceEventCompositeKey;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -56,5 +57,17 @@ public class PartyEventCommandDA implements IPartyEventCommandDA {
                 HttpStatus.INTERNAL_SERVER_ERROR,
                 "Error saving an assistant to party event"
         );
+    }
+
+    @Override
+    public void deleteAssistantToEvent(AssistantEventCommandDAO request) {
+        try {
+            this.assistanceEventCommandRepository.delete(request);
+        } catch (Exception e) {
+            throw new ResponseStatusException(
+                    HttpStatus.INTERNAL_SERVER_ERROR,
+                    "Error saving an assistant to party event"
+            );
+        }
     }
 }

@@ -7,5 +7,6 @@ import com.partyapp.commons.entities.event.party.PartyEventDTO;
 public interface IEventCommandService<T extends BaseEventDTO> {
     public PartyEventDTO createEvent(T event);
     public void modifyEvent(T event, Long id);
-    AssistantEventDTO addAssistantToEvent(AssistantEventDTO request);
+    public AssistantEventDTO addAssistantToEvent(AssistantEventDTO request);
+    public void deleteAssistantsToEvent(AssistantEventDTO request);
 }
