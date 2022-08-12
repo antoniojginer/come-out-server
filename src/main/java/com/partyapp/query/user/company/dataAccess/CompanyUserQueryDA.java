@@ -1,6 +1,7 @@
 package com.partyapp.query.user.company.dataAccess;
 
 import com.partyapp.commons.dataAccess.query.user.company.CompanyUserDAO;
+import com.partyapp.commons.entities.user.LoginDTO;
 import com.partyapp.query.user.company.dataAccess.jpaReporsitory.CompanyUserQueryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -54,4 +55,5 @@ public class CompanyUserQueryDA implements ICompanyUserQueryDA {
                 "Empty result in getAllCompanyUsers query"
         );
     }
+
 }

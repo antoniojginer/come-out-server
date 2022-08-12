@@ -1,6 +1,7 @@
 package com.partyapp.query.user.company.service;
 
 import com.partyapp.commons.dataAccess.query.user.company.CompanyUserDAO;
+import com.partyapp.commons.entities.user.LoginDTO;
 import com.partyapp.commons.entities.user.company.CompanyUserDTO;
 import com.partyapp.commons.mapper.QueryMapper;
 import com.partyapp.query.user.base.service.IBaseUserQueryService;
@@ -33,4 +34,5 @@ public class CompanyQueryService implements ICompanyUserQueryService {
                 .map(user -> queryMapper.toCompanyUserDetailDto(user))
                 .collect(Collectors.toList());
     }
+
 }

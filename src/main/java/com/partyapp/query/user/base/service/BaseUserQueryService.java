@@ -33,4 +33,5 @@ public class BaseUserQueryService implements IBaseUserQueryService {
                 .map(user -> queryMapper.toBaseUserDto(user))
                 .collect(Collectors.toList());
     }
+
 }

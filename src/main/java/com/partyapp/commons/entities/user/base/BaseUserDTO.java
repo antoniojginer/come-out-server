@@ -8,4 +8,5 @@ public class BaseUserDTO {
     private Long id;
     private String email;
     private LocationDTO location;
+    private String password;
 }
