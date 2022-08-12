@@ -1,7 +1,7 @@
-package com.partyapp.query.user.login.controller;
+package com.partyapp.commons.login.controller;
 
 import com.partyapp.commons.entities.user.LoginDTO;
-import com.partyapp.query.user.login.service.ILoginService;
+import com.partyapp.commons.login.service.ILoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

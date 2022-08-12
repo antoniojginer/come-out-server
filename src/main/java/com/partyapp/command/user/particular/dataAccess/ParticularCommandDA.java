@@ -4,8 +4,10 @@ import com.partyapp.command.user.particular.dataAccess.jpaRepository.ParticularU
 import com.partyapp.commons.dataAccess.command.user.particular.ParticularUserCommandDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+@Service
 public class ParticularCommandDA implements IParticularCommandDA {
 
     @Autowired

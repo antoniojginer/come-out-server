@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class LoginDAO {
     @Id
     @Column(name = "id")
-    private String id;
+    private Long id;
     @Column(name = "email")
     private String email;
     @Column(name = "password")

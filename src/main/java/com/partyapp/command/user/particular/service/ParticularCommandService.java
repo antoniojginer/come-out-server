@@ -1,10 +1,12 @@
 package com.partyapp.command.user.particular.service;
 
+import com.partyapp.command.user.base.service.IBaseUserCommandService;
 import com.partyapp.command.user.particular.dataAccess.IParticularCommandDA;
 import com.partyapp.commons.dataAccess.command.user.base.BaseUserCommandDAO;
-import com.partyapp.commons.dataAccess.command.user.login.LoginCommandDAO;
 import com.partyapp.commons.dataAccess.command.user.particular.ParticularUserCommandDAO;
+import com.partyapp.commons.entities.user.base.BaseUserDTO;
 import com.partyapp.commons.entities.user.particular.ParticularUserDTO;
+import com.partyapp.commons.login.service.ILoginService;
 import com.partyapp.commons.mapper.CommandMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,12 @@ public class ParticularCommandService implements IParticularCommandService {
     private IParticularCommandDA particularCommandDA;
 
     @Autowired
+    private IBaseUserCommandService baseUserCommandService;
+
+    @Autowired
+    private ILoginService loginService;
+
+    @Autowired
     private CommandMapper commandMapper;
 
     @Override
@@ -26,12 +34,11 @@ public class ParticularCommandService implements IParticularCommandService {
         if (request.getLocation() != null && request.getLocation().getId() == null) {
             // Save location
         }
-        // MAP baseUser
-        BaseUserCommandDAO baseUserCommandDAO = commandMapper.toBaseUserCommandDAO(request);
-        // SAVE baseUser
-        // MAP login
-        LoginCommandDAO loginCommandDAO = commandMapper.toLoginCommandDAO(request);
-        // Save login
+        BaseUserDTO baseUserDTO = baseUserCommandService.saveBaseUser(
+                commandMapper.toBaseUserCommandDTO(request)
+        );
+        request.setId(baseUserDTO.getId());
+        loginService.saveLogin(commandMapper.toLoginDTO(request));
         ParticularUserCommandDAO particularUserCommandDAO = particularCommandDA.createParticularUser(
                 commandMapper.toParticularUserCommandDAO(request)
         );

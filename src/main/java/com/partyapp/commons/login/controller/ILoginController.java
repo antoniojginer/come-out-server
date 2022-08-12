@@ -1,4 +1,4 @@
-package com.partyapp.query.user.login.controller;
+package com.partyapp.commons.login.controller;
 
 import com.partyapp.commons.entities.user.LoginDTO;
 

@@ -7,7 +7,6 @@ import com.partyapp.commons.dataAccess.command.event.party.PartyEventCommandDAO;
 import com.partyapp.commons.dataAccess.command.locality.LocalityCommandDAO;
 import com.partyapp.commons.dataAccess.command.location.LocationCommandDAO;
 import com.partyapp.commons.dataAccess.command.user.base.BaseUserCommandDAO;
-import com.partyapp.commons.dataAccess.command.user.login.LoginCommandDAO;
 import com.partyapp.commons.dataAccess.command.user.particular.ParticularUserCommandDAO;
 import com.partyapp.commons.dataAccess.query.user.base.BaseUserDAO;
 import com.partyapp.commons.dataAccess.query.user.login.LoginDAO;
@@ -16,6 +15,8 @@ import com.partyapp.commons.entities.event.party.PartyEventDTO;
 import com.partyapp.commons.entities.location.CountryDTO;
 import com.partyapp.commons.entities.location.LocalityDTO;
 import com.partyapp.commons.entities.location.LocationDTO;
+import com.partyapp.commons.entities.user.LoginDTO;
+import com.partyapp.commons.entities.user.base.BaseUserDTO;
 import com.partyapp.commons.entities.user.particular.ParticularUserDTO;
 import com.partyapp.commons.mapper.helper.ListToDatabaseStringHelper;
 import org.mapstruct.Mapper;
@@ -113,10 +114,17 @@ public abstract class CommandMapper {
 
     public abstract AssistantEventCommandDAO toAssistantEventCommandDAO(AssistantEventDTO source);
 
-    @Mapping(target = "locationId", source = "source.location.id")
-    public abstract BaseUserCommandDAO toBaseUserCommandDAO(ParticularUserDTO source);
+    @Mapping(target = "location.id", source = "source.location.id")
+    public abstract BaseUserDTO toBaseUserCommandDTO(ParticularUserDTO source);
 
-    public abstract LoginCommandDAO toLoginCommandDAO(ParticularUserDTO source);
+    @Mapping(target = "locationId", source = "source.location.id")
+    public abstract BaseUserCommandDAO toBaseUserCommandDAO(BaseUserDTO source);
+
+    public abstract LoginDTO toLoginDTO(ParticularUserDTO source);
+
+    public abstract LoginDAO toLoginDAO(LoginDTO source);
+
+    public abstract LoginDTO toLoginDTO(LoginDAO source);
 
     public abstract ParticularUserCommandDAO toParticularUserCommandDAO(ParticularUserDTO source);
 }
