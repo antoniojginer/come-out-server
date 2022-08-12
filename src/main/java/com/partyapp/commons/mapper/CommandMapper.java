@@ -6,12 +6,17 @@ import com.partyapp.commons.dataAccess.command.event.base.BaseEventCommandDAO;
 import com.partyapp.commons.dataAccess.command.event.party.PartyEventCommandDAO;
 import com.partyapp.commons.dataAccess.command.locality.LocalityCommandDAO;
 import com.partyapp.commons.dataAccess.command.location.LocationCommandDAO;
+import com.partyapp.commons.dataAccess.command.user.base.BaseUserCommandDAO;
+import com.partyapp.commons.dataAccess.command.user.login.LoginCommandDAO;
+import com.partyapp.commons.dataAccess.command.user.particular.ParticularUserCommandDAO;
 import com.partyapp.commons.dataAccess.query.user.base.BaseUserDAO;
+import com.partyapp.commons.dataAccess.query.user.login.LoginDAO;
 import com.partyapp.commons.entities.event.AssistantEventDTO;
 import com.partyapp.commons.entities.event.party.PartyEventDTO;
 import com.partyapp.commons.entities.location.CountryDTO;
 import com.partyapp.commons.entities.location.LocalityDTO;
 import com.partyapp.commons.entities.location.LocationDTO;
+import com.partyapp.commons.entities.user.particular.ParticularUserDTO;
 import com.partyapp.commons.mapper.helper.ListToDatabaseStringHelper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -19,9 +24,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @Mapper(componentModel = "spring")
 public abstract class CommandMapper {
-
-    @Autowired
-    private QueryMapper queryMapper;
 
     @Autowired
     protected ListToDatabaseStringHelper helper;
@@ -110,4 +112,11 @@ public abstract class CommandMapper {
     public abstract AssistantEventDTO toAssistantEventDTO(AssistantEventCommandDAO source);
 
     public abstract AssistantEventCommandDAO toAssistantEventCommandDAO(AssistantEventDTO source);
+
+    @Mapping(target = "locationId", source = "source.location.id")
+    public abstract BaseUserCommandDAO toBaseUserCommandDAO(ParticularUserDTO source);
+
+    public abstract LoginCommandDAO toLoginCommandDAO(ParticularUserDTO source);
+
+    public abstract ParticularUserCommandDAO toParticularUserCommandDAO(ParticularUserDTO source);
 }
