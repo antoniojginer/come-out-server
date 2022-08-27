@@ -1,25 +1,20 @@
 package com.partyapp;
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.annotation.PostConstruct;
 import java.util.TimeZone;
 
-@SpringBootApplication(exclude = {
-		org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class
-	}
-)
+@SpringBootApplication()
+@OpenAPIDefinition(info = @Info(title = "WParty Server APP"))
 public class Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
 
-	@PostConstruct
-	public void init(){
-		// Setting Spring Boot SetTimeZone
-		// TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
-	}
 
 }
